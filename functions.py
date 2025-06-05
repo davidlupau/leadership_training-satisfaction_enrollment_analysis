@@ -13,3 +13,23 @@ def transform_categorical_to_numerical(df, column, mapping):
         df[column] = df[column].map(mapping)
 
     return df
+
+def load_dataset(file_name):
+    """Load the dataset from the specified file.
+    Parameters:
+    file_name (str): The name of the file to load.
+    Returns:
+    DataFrame: The loaded dataset.
+    """
+    print("Loading data... \n")
+    if os.path.exists(file_name):
+        try:
+            df = pd.read_excel(file_name)
+            print("Data loaded successfully.")
+            return df
+        except Exception as e:
+            print(f"Error loading file: {e}")
+            return None
+    else:
+        print("File not found")
+        return None
